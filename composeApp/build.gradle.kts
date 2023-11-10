@@ -36,6 +36,7 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.media3.exoplayer)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
