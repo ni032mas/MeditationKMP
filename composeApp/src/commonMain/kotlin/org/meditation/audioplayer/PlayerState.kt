@@ -18,10 +18,3 @@ class PlayerState{
     var canNext by mutableStateOf(false)
     var canPrev by mutableStateOf(false)
 }
-
-@Composable
-fun rememberPlayerState(): PlayerState {
-    return remember {
-        PlayerState()
-    }
-}

@@ -21,21 +21,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.meditation.audioplayer.AudioPlayer
-import org.meditation.audioplayer.rememberPlayerState
 import org.meditation.data.Audio
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import org.meditation.audioplayer.PlayerState
 
 @Composable
 fun App(){
     MaterialTheme {
         val viewModel = remember { HomeViewModel() }
         val audioList = remember { viewModel.getAudios() }
-        val playerState = rememberPlayerState()
+        val playerState = remember { PlayerState() }
         val player = remember { AudioPlayer(playerState) }
 
         LaunchedEffect(Unit){
-            player.addSongsUrls(audioList.map { it.streamUrl })
+            player.addSongsUrls(audioList.map { url -> url.streamUrl })
         }
         HomeScreen(
             audioList = audioList,
@@ -277,7 +277,7 @@ fun SeekBarAndDuration(
     Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically){
         Text(parseDurationToTime(currentDuration, "", false), fontSize = 14.sp, color = Color.White)
         Slider(
-            parseDurationToFloat(currentDuration, totalDurationInSeconds, totalDuration, isPlaying),
+            value = parseDurationToFloat(currentDuration, totalDurationInSeconds, totalDuration, isPlaying),
             modifier = Modifier.weight(1f),
             onValueChange = {
                val seekTime = parseFloatToDuration(it, totalDurationInSeconds, totalDuration, isPlaying)
