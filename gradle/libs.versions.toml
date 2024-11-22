@@ -15,7 +15,7 @@ androidx-material = "1.12.0"
 androidx-constraintlayout = "2.2.0"
 androidx-test-junit = "1.2.1"
 androidx-espresso-core = "3.6.1"
-kotlin = "1.9.20"
+kotlin = "2.0.21"
 junit = "4.13.2"
 media3Exoplayer = "1.4.1"
 
